@@ -10,7 +10,7 @@ namespace CSharpFunctionalExtensions
             if (result.IsFailure)
                 return Result.Fail<TNewValue, TError>(result.Error);
 
-            return Result.Ok<TNewValue, TError>(func(result.Value));
+            return Result.Success<TNewValue, TError>(func(result.Value));
         }
 
         public static Result<K> OnSuccess<T, K>(this Result<T> result, Func<T, K> func)
@@ -18,7 +18,7 @@ namespace CSharpFunctionalExtensions
             if (result.IsFailure)
                 return Result.Fail<K>(result.Error);
 
-            return Result.Ok(func(result.Value));
+            return Result.Success(func(result.Value));
         }
 
         public static Result<T> OnSuccess<T>(this Result result, Func<T> func)
@@ -26,7 +26,7 @@ namespace CSharpFunctionalExtensions
             if (result.IsFailure)
                 return Result.Fail<T>(result.Error);
 
-            return Result.Ok(func());
+            return Result.Success(func());
         }
 
         public static Result<TNewValue, TError> OnSuccess<TValue, TNewValue, TError>(this Result<TValue, TError> result,
@@ -114,7 +114,7 @@ namespace CSharpFunctionalExtensions
             if (!predicate(result.Value))
                 return Result.Fail<TValue, TError>(errorObject);
 
-            return Result.Ok<TValue, TError>(result.Value);
+            return Result.Success<TValue, TError>(result.Value);
         }
 
         public static Result<T> Ensure<T>(this Result<T> result, Func<T, bool> predicate, string errorMessage)
@@ -125,7 +125,7 @@ namespace CSharpFunctionalExtensions
             if (!predicate(result.Value))
                 return Result.Fail<T>(errorMessage);
 
-            return Result.Ok(result.Value);
+            return Result.Success(result.Value);
         }
 
         public static Result Ensure(this Result result, Func<bool> predicate, string errorMessage)
@@ -136,7 +136,7 @@ namespace CSharpFunctionalExtensions
             if (!predicate())
                 return Result.Fail(errorMessage);
 
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result<TNewValue, TError> Map<TValue, TNewValue, TError>(this Result<TValue, TError> result,
@@ -145,7 +145,7 @@ namespace CSharpFunctionalExtensions
             if (result.IsFailure)
                 return Result.Fail<TNewValue, TError>(result.Error);
 
-            return Result.Ok<TNewValue, TError>(func(result.Value));
+            return Result.Success<TNewValue, TError>(func(result.Value));
         }
 
         public static Result<K> Map<T, K>(this Result<T> result, Func<T, K> func)
@@ -153,7 +153,7 @@ namespace CSharpFunctionalExtensions
             if (result.IsFailure)
                 return Result.Fail<K>(result.Error);
 
-            return Result.Ok(func(result.Value));
+            return Result.Success(func(result.Value));
         }
 
         public static Result<T> Map<T>(this Result result, Func<T> func)
@@ -161,7 +161,7 @@ namespace CSharpFunctionalExtensions
             if (result.IsFailure)
                 return Result.Fail<T>(result.Error);
 
-            return Result.Ok(func());
+            return Result.Success(func());
         }
 
         public static Result<TValue, TError> OnSuccess<TValue, TError>(this Result<TValue, TError> result,

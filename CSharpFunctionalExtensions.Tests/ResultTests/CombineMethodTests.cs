@@ -9,7 +9,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
         [Fact]
         public void FirstFailureOrSuccess_returns_the_first_failed_result()
         {
-            Result result1 = Result.Ok();
+            Result result1 = Result.Success();
             Result result2 = Result.Fail("Failure 1");
             Result result3 = Result.Fail("Failure 2");
 
@@ -22,9 +22,9 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
         [Fact]
         public void FirstFailureOrSuccess_returns_Ok_if_no_failures()
         {
-            Result result1 = Result.Ok();
-            Result result2 = Result.Ok();
-            Result result3 = Result.Ok();
+            Result result1 = Result.Success();
+            Result result2 = Result.Success();
+            Result result3 = Result.Success();
 
             Result result = Result.FirstFailureOrSuccess(result1, result2, result3);
 
@@ -34,7 +34,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
         [Fact]
         public void Combine_combines_all_errors_together()
         {
-            Result result1 = Result.Ok();
+            Result result1 = Result.Success();
             Result result2 = Result.Fail("Failure 1");
             Result result3 = Result.Fail("Failure 2");
 
@@ -47,9 +47,9 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
         [Fact]
         public void Combine_returns_Ok_if_no_failures()
         {
-            Result result1 = Result.Ok();
-            Result result2 = Result.Ok();
-            Result<string> result3 = Result.Ok("Some string");
+            Result result1 = Result.Success();
+            Result result2 = Result.Success();
+            Result<string> result3 = Result.Success("Some string");
 
             Result result = Result.Combine(";", result1, result2, result3);
 
@@ -59,7 +59,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
         [Fact]
         public void Combine_works_with_array_of_Generic_results_success()
         {
-            Result<string>[] results = new Result<string>[]{ Result.Ok(""), Result.Ok("") };
+            Result<string>[] results = new Result<string>[]{ Result.Success(""), Result.Success("") };
 
             Result result = Result.Combine(";", results);
 
@@ -70,7 +70,7 @@ namespace CSharpFunctionalExtensions.Tests.ResultTests
         [Fact]
         public void Combine_works_with_array_of_Generic_results_failure()
         {
-            Result<string>[] results = new Result<string>[] { Result.Ok(""), Result.Fail<string>("m") };
+            Result<string>[] results = new Result<string>[] { Result.Success(""), Result.Fail<string>("m") };
 
             Result result = Result.Combine(";", results);
 

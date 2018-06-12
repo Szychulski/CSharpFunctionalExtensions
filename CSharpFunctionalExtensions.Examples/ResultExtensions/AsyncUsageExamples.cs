@@ -65,12 +65,12 @@ namespace CSharpFunctionalExtensions.Examples.ResultExtensions
         {
             public Result SendPromotionNotification(string email)
             {
-                return Result.Ok();
+                return Result.Success();
             }
 
             public Task<Result> SendPromotionNotificationAsync(string email)
             {
-                return Task.FromResult(Result.Ok());
+                return Task.FromResult(Result.Success());
             }
         }
     }

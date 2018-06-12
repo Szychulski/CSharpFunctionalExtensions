@@ -18,7 +18,7 @@ namespace CSharpFunctionalExtensions
 
             K value = await func(result.Value);
 
-            return Result.Ok(value);
+            return Result.Success(value);
         }
 
         public static async Task<Result<T>> OnSuccess<T>(this Task<Result> resultTask, Func<Task<T>> func, bool continueOnCapturedContext = true)
@@ -30,7 +30,7 @@ namespace CSharpFunctionalExtensions
 
             T value = await func().ConfigureAwait(continueOnCapturedContext);
 
-            return Result.Ok(value);
+            return Result.Success(value);
         }
 
         public static async Task<Result<K>> OnSuccess<T, K>(this Task<Result<T>> resultTask, Func<T, Task<Result<K>>> func, bool continueOnCapturedContext = true)
@@ -93,7 +93,7 @@ namespace CSharpFunctionalExtensions
             if (!await predicate(result.Value).ConfigureAwait(continueOnCapturedContext))
                 return Result.Fail<T>(errorMessage);
 
-            return Result.Ok(result.Value);
+            return Result.Success(result.Value);
         }
 
         public static async Task<Result> Ensure(this Task<Result> resultTask, Func<Task<bool>> predicate, string errorMessage, bool continueOnCapturedContext = true)
@@ -106,7 +106,7 @@ namespace CSharpFunctionalExtensions
             if (!await predicate().ConfigureAwait(continueOnCapturedContext))
                 return Result.Fail(errorMessage);
 
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static async Task<Result<K>> Map<T, K>(this Task<Result<T>> resultTask, Func<T, Task<K>> func, bool continueOnCapturedContext = true)
@@ -118,7 +118,7 @@ namespace CSharpFunctionalExtensions
 
             K value = await func(result.Value).ConfigureAwait(continueOnCapturedContext);
 
-            return Result.Ok(value);
+            return Result.Success(value);
         }
 
         public static async Task<Result<T>> Map<T>(this Task<Result> resultTask, Func<Task<T>> func, bool continueOnCapturedContext = true)
@@ -130,7 +130,7 @@ namespace CSharpFunctionalExtensions
 
             T value = await func().ConfigureAwait(continueOnCapturedContext);
 
-            return Result.Ok(value);
+            return Result.Success(value);
         }
 
         public static async Task<Result<T>> OnSuccess<T>(this Task<Result<T>> resultTask, Func<T, Task> action, bool continueOnCapturedContext = true)
