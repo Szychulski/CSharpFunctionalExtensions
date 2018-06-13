@@ -197,6 +197,12 @@ namespace CSharpFunctionalExtensions
 		}
 
 		[DebuggerStepThrough]
+		public static Result Combine<T>(IEnumerable<Result<T>> results)
+		{
+			return Combine(", ", results.ToArray());
+		}
+
+		[DebuggerStepThrough]
 		public static Result Combine(params Result[] results)
 		{
 			return Combine(", ", results);

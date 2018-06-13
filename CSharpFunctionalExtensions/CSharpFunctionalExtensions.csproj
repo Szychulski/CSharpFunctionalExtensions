@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard1.3;net40;net45;net461</TargetFrameworks>
     <PackageId>FunExtensions</PackageId>
-    <PackageVersion>1.11.0</PackageVersion>
+    <PackageVersion>1.11.1</PackageVersion>
     <Authors>Pawel Szychulski</Authors>
     <Description>CSharpFunctionalExtensions - functional extensions for C#.
 fork of https://github.com/vkhorikov/CSharpFunctionalExtensions</Description>
@@ -13,9 +13,9 @@ fork of https://github.com/vkhorikov/CSharpFunctionalExtensions</Description>
     <PackageProjectUrl></PackageProjectUrl>
     <NeutralLanguage>en-US</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.11.0</Version>
-    <AssemblyVersion>1.11.0.0</AssemblyVersion>
-    <FileVersion>1.11.0.0</FileVersion>
+    <Version>1.11.1</Version>
+    <AssemblyVersion>1.11.1.0</AssemblyVersion>
+    <FileVersion>1.11.1.0</FileVersion>
     <Product>FunExtensions</Product>
   </PropertyGroup>
 
