@@ -92,7 +92,7 @@ namespace CSharpFunctionalExtensions
 		public static readonly string ErrorMessageIsProvidedForSuccess = "There should be no error message for success.";
 	}
 
-
+	[Serializable]
 	public struct Result : ISerializable
 	{
 		private static readonly Result OkResult = new Result(false, null);
@@ -222,6 +222,7 @@ namespace CSharpFunctionalExtensions
 		}
 	}
 
+	[Serializable]
 	public struct Result<T> : ISerializable
 	{
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -274,7 +275,7 @@ namespace CSharpFunctionalExtensions
 				return Result.Fail(result.Error);
 		}
 	}
-
+	[Serializable]
 	public struct Result<TValue, TError> : ISerializable
 	{
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
