@@ -273,19 +273,6 @@ namespace CSharpFunctionalExtensions
 			return result;
 		}
 
-		public static Result Try<TException>(Action action, Func<Exception, string> errorProvider) where TException : Exception
-		{
-			try
-			{
-				action();
-				return Result.Success();
-			}
-			catch (TException exception)
-			{
-				return Result.Fail(errorProvider(exception));
-			}
-		}
-
 		public static Result<T> Try<TException, T>(Func<Result<T>> func, Func<Exception, string> errorProvider) where TException : Exception
 		{
 			try
@@ -297,10 +284,6 @@ namespace CSharpFunctionalExtensions
 				return Result.Fail<T>(errorProvider(exception));
 			}
 		}
-
-		public static Result Try<TException>(Action action) where TException : Exception
-			=> Try<TException>(action, DefaultErrorProvider);
-
 
 		public static Result<T> Try<TException, T>(Func<Result<T>> func) where TException : Exception
 			=> Try<TException, T>(func, DefaultErrorProvider);
