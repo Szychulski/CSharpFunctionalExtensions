@@ -282,7 +282,7 @@ namespace CSharpFunctionalExtensions
 
 			return result;
 		}
-
+		
 		public static Result<T> Try<TException, T>(Func<Result<T>> func, Func<Exception, string> errorProvider) where TException : Exception
 		{
 			try

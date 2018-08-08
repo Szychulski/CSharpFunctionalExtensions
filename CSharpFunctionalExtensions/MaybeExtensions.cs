@@ -4,7 +4,14 @@ namespace CSharpFunctionalExtensions
 {
     public static class MaybeExtensions
     {
-        public static Result<T> ToResult<T>(this Maybe<T> maybe, string errorMessage)
+		/// <summary>
+		/// Return Result T success when maybe has value
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="maybe"></param>
+		/// <param name="errorMessage"></param>
+		/// <returns></returns>
+	    public static Result<T> ToValidResult<T>(this Maybe<T> maybe, string errorMessage)
         {
             if (maybe.HasNoValue)
                 return Result.Fail<T>(errorMessage);
