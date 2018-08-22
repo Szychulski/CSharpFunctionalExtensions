@@ -10,7 +10,7 @@ namespace CSharpFunctionalExtensions.Examples.ResultExtensions
             var database = new Database();
 
             return GetById(customerId)
-                .ToResult("Customer with such Id is not found: " + customerId)
+                .ToValidResult("Customer with such Id is not found: " + customerId)
                 .OnSuccess(customer => customer.AddBalance(moneyAmount))
                 .OnSuccess(customer => paymentGateway.ChargePayment(customer, moneyAmount).Map(() => customer))
                 .OnSuccess(

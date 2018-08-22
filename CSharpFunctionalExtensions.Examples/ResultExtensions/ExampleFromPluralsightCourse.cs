@@ -7,7 +7,7 @@ namespace CSharpFunctionalExtensions.Examples.ResultExtensions
             var gateway = new EmailGateway();
 
             return GetById(id)
-                .ToResult("Customer with such Id is not found: " + id)
+                .ToValidResult("Customer with such Id is not found: " + id)
                 .Ensure(customer => customer.CanBePromoted(), "The customer has the highest status possible")
                 .OnSuccess(customer => customer.Promote())
                 .OnSuccess(customer => gateway.SendPromotionNotification(customer.Email))

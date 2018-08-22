@@ -53,7 +53,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests
             var instance = new MyClass();
             Maybe<MyClass> maybe = instance;
 
-            Result<MyClass> result = maybe.ToResult("Error");
+            Result<MyClass> result = maybe.ToValidResult("Error");
 
             result.IsSuccess.Should().BeTrue();
             result.Value.Should().Be(instance);
@@ -64,7 +64,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests
         {
             Maybe<MyClass> maybe = null;
 
-            Result<MyClass> result = maybe.ToResult("Error");
+            Result<MyClass> result = maybe.ToValidResult("Error");
 
             result.IsSuccess.Should().BeFalse();
             result.Error.Should().Be("Error");

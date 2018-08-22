@@ -57,8 +57,9 @@ namespace CSharpFunctionalExtensions
             if (obj == null)
                 return false;
 
-            if (GetType() != obj.GetType())
-                throw new ArgumentException($"Invalid comparison of Value Objects of different types: {GetType()} and {obj.GetType()}");
+	        if (GetType() != obj.GetType())
+		        return false;
+				//throw new ArgumentException($"Invalid comparison of Value Objects of different types: {GetType()} and {obj.GetType()}");
 
             var valueObject = (ValueObject)obj;
 
